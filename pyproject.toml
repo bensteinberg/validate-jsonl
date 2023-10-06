@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "validate-ln-jsonl"
+name = "validate-jsonl"
 version = "0.1.0"
 description = "Validates JSONL according to a schema"
 authors = ["Ben Steinberg <bsteinberg@law.harvard.edu>"]
@@ -13,7 +13,7 @@ jsonschema = "^4.19.1"
 click = "^8.1.7"
 
 [tool.poetry.scripts]
-validate = 'validate_ln_jsonl.validate:cli'
+validate = 'validate_jsonl.validate:cli'
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"

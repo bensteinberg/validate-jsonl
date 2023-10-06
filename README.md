@@ -1,4 +1,4 @@
-validate-ln-jsonl
+validate-jsonl
 =================
 
 This tool is intended to be used in a GitHub Action for validating
@@ -16,13 +16,13 @@ jobs:
           fetch-depth: 2
       - name: Install the validator
         run: |
-          pip install git+https://github.com/bensteinberg/validate-ln-jsonl.git
+          pip install git+https://github.com/bensteinberg/validate-jsonl.git
       - name: Validate files changed in the current PR
         run: |
           changedFiles=$(git diff --name-only HEAD^1 HEAD | grep '\.jsonl$')
           for file in $changedFiles; do
             echo "Processing file: $file"
-            validate --jsonl $file
+            validate --schema schema.json --jsonl $file
           done
 ```
 
