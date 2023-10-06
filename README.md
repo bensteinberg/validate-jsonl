@@ -25,3 +25,6 @@ jobs:
             validate --jsonl $file
           done
 ```
+
+At the moment, you will need to include the schema in your repo; the
+[example here](citations.json) is not part of the package.
