@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "validate-ln-jsonl"
+version = "0.1.0"
+description = "Validates JSONL according to a schema"
+authors = ["Ben Steinberg <bsteinberg@law.harvard.edu>"]
+readme = "README.md"
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+jsonschema = "^4.19.1"
+click = "^8.1.7"
+
+[tool.poetry.scripts]
+validate = 'validate_ln_jsonl.validate:cli'
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

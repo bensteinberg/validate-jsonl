@@ -1,0 +1,95 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$ref": "#/$defs/Case",
+    "$defs": {
+        "Case": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "source": {
+                    "type": "string"
+                },
+                "source_id": {
+                    "type": "integer"
+                },
+                "citations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Citation"
+                    }
+                },
+                "name_short": {
+                    "type": "string"
+                },
+                "name_full": {
+                    "type": "string"
+                },
+                "decision_date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "simhash": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "citations",
+                "decision_date",
+                "name_short",
+                "source"
+            ],
+            "title": "Case"
+        },
+        "Citation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "cite": {
+                    "type": "string"
+                },
+                "normalized_cite": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/$defs/Type"
+                },
+                "volume": {
+                    "$ref": "#/$defs/Volume"
+                },
+                "reporter": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cite",
+                "type"
+            ],
+            "title": "Citation"
+        },
+          "Type": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Type"
+        },
+        "Volume": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Volume"   
+        }
+    }
+}
