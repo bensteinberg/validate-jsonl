@@ -5,6 +5,7 @@ description = "Validates JSONL according to a schema"
 authors = ["Ben Steinberg <bsteinberg@law.harvard.edu>"]
 readme = "README.md"
 license = "GPL-3.0-or-later"
+include = ["citations.json"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
