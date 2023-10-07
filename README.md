@@ -27,4 +27,8 @@ jobs:
 ```
 
 At the moment, you will need to include the schema in your repo; the
-[example here](citations.json) is not part of the package.
+[example here](citations.json) is not part of the package. Note that
+since the validator looks for files ending in `.json` as well as
+`.jsonl`, you should add the schema to the repo before setting up the
+action, or, given the action above, add it via push rather than pull
+request.
