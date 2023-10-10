@@ -1,5 +1,6 @@
 import click
 import json
+from collections import defaultdict
 from jsonschema import validate
 
 
@@ -12,7 +13,7 @@ def cli(schema, jsonl):
     with open(schema, 'r') as f:
         schema = json.load(f)
 
-    exceptions = []
+    exceptions = defaultdict(list)
 
     with open(jsonl, 'r') as f:
         for idx, line in enumerate(f.readlines()):
@@ -20,14 +21,16 @@ def cli(schema, jsonl):
             try:
                 validate(instance=json.loads(line), schema=schema)
             except Exception as e:
-                exceptions.append(str(line_number))
-                print(f'Exception at line {line_number}: {e}')
+                err = str(e).splitlines()[0]
+                exceptions[err].append(str(line_number))
+                click.echo(f'Exception at line {line_number}: {err}')
 
         s = 's' if line_number > 1 else ''
         click.echo(f'Info: Read {line_number} line{s} in {jsonl}.')
 
         if exceptions:
             s = 's' if len(exceptions) > 1 else ''
-            raise click.ClickException(
-                f'Validation failed with {len(exceptions)} exception{s}, at line{s} {", ".join(exceptions)}.'  # noqa
-            )
+            msg = 'Error report:\n\n'
+            for err, lst in exceptions.items():
+                msg += f'{err} at lines {", ".join(exceptions[err])}'
+            raise click.ClickException(msg)

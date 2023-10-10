@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "validate-jsonl"
-version = "0.1.1"
+version = "0.1.2"
 description = "Validates JSONL according to a schema"
 authors = ["Ben Steinberg <bsteinberg@law.harvard.edu>"]
 readme = "README.md"
