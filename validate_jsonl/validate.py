@@ -30,7 +30,7 @@ def cli(schema, jsonl):
 
         if exceptions:
             s = 's' if len(exceptions) > 1 else ''
-            msg = 'Error report:\n\n'
+            msg = '\n\n'
             for err, lst in exceptions.items():
-                msg += f'{err} at lines {", ".join(exceptions[err])}'
+                msg += f'{err} at lines {", ".join(exceptions[err])}\n\n'
             raise click.ClickException(msg)
