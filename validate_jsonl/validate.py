@@ -36,5 +36,5 @@ def cli(schema, jsonl, fail_fast):
         if exceptions:
             msg = '\n\n'
             for err, lst in exceptions.items():
-                msg += f'{err} at lines {", ".join(exceptions[err])}\n\n'
+                msg += f'{err} at lines {", ".join(lst)}\n\n'
             raise click.ClickException(msg)
