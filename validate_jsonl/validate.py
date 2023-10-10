@@ -34,7 +34,6 @@ def cli(schema, jsonl, fail_fast):
         click.echo(f'Info: Read {line_number} line{s} in {jsonl}.')
 
         if exceptions:
-            s = 's' if len(exceptions) > 1 else ''
             msg = '\n\n'
             for err, lst in exceptions.items():
                 msg += f'{err} at lines {", ".join(exceptions[err])}\n\n'
